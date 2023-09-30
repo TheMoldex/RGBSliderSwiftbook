@@ -9,11 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var changesView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewWillLayoutSubviews() {
+        view.backgroundColor = .systemMint
+        changesView.layer.cornerRadius = changesView.frame.width / 2
+    }
 }
 
