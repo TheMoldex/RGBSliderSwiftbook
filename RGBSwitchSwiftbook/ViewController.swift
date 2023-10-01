@@ -38,16 +38,22 @@ final class ViewController: UIViewController {
     }
     
     private func settingStartView() {
-        red.text = "Red: "
-        green.text = "Green: "
-        blue.text = "Blue: "
+        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
         setupRedSlider()
         setupGreenSlider()
         setupBlueSlider()
-        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
+        setupLabelAndValue()
+    }
+    private func setupLabelAndValue() {
+        red.text = "Red: "
+        green.text = "Green: "
+        blue.text = "Blue: "
         redValue.text = String(format: "%.2f", redSlider.value)
         greenValue.text = String(format: "%.2f", redSlider.value)
         blueValue.text = String(format: "%.2f", blueSlider.value)
+        red.textColor = .red
+        green.textColor = .green
+        blue.textColor = .blue
     }
     
     private func setupRedSlider() {
