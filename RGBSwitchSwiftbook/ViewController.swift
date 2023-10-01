@@ -23,6 +23,10 @@ final class ViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    let randomRedFloat = Float.random(in: 0...1)
+    let randomGreenFloat = Float.random(in: 0...1)
+    let randomBlueFloat = Float.random(in: 0...1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingStartView()
@@ -40,10 +44,10 @@ final class ViewController: UIViewController {
         setupRedSlider()
         setupGreenSlider()
         setupBlueSlider()
+        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
         redValue.text = String(format: "%.2f", redSlider.value)
         greenValue.text = String(format: "%.2f", redSlider.value)
         blueValue.text = String(format: "%.2f", blueSlider.value)
-        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(redSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
     }
     
     private func setupRedSlider() {
@@ -51,7 +55,7 @@ final class ViewController: UIViewController {
         redSlider.maximumValue = 1
         redSlider.minimumTrackTintColor = .red
         redSlider.thumbTintColor = .red
-        redSlider.setValue(0.5, animated: false)
+        redSlider.setValue(randomRedFloat, animated: false)
     }
     
     private func setupGreenSlider() {
@@ -59,7 +63,7 @@ final class ViewController: UIViewController {
         greenSlider.minimumValue = 0
         greenSlider.minimumTrackTintColor = .green
         greenSlider.thumbTintColor = .green
-        greenSlider.setValue(0.5, animated: false)
+        greenSlider.setValue(randomGreenFloat, animated: false)
     }
     
     private func setupBlueSlider() {
@@ -67,19 +71,22 @@ final class ViewController: UIViewController {
         blueSlider.maximumValue = 1
         blueSlider.minimumTrackTintColor = .blue
         blueSlider.thumbTintColor = .blue
-        blueSlider.setValue(0.5, animated: false)
+        blueSlider.setValue(randomBlueFloat, animated: false)
     }
     
     @IBAction func redSliderAction() {
         redValue.text = String(format: "%.2f", redSlider.value)
+        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(redSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
     }
     
     @IBAction func greenSliderAction() {
         greenValue.text = String(format: "%.2f", greenSlider.value)
+        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
     }
     
     @IBAction func blueSliderAction() {
         blueValue.text = String(format: "%.2f", blueSlider.value)
+        changesView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
     }
     
 }
