@@ -1,1 +1,1 @@
-# RGBSwitchSwiftbook
+# RGBSliderSwiftbook
