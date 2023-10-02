@@ -22,22 +22,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kn7-zt-ywV" userLabel="Color">
                                         <rect key="frame" x="0.0" y="0.0" width="23.5" height="77.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0A-0f-MlW" userLabel="Red">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0A-0f-MlW" userLabel="Red">
                                                 <rect key="frame" x="0.0" y="0.0" width="23.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.01666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4L-QI-mh1" userLabel="Green">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4L-QI-mh1" userLabel="Green">
                                                 <rect key="frame" x="0.0" y="28.5" width="23.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.061491080529999999" green="1" blue="0.29746096280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxk-SJ-LBR" userLabel="Bue">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxk-SJ-LBR" userLabel="Bue">
                                                 <rect key="frame" x="0.0" y="57" width="23.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" systemColor="systemBlueColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -115,14 +115,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blue" destination="Sxk-SJ-LBR" id="dpb-ve-RlY"/>
                         <outlet property="blueSlider" destination="s76-HK-tmM" id="ekY-D7-NDU"/>
                         <outlet property="blueValue" destination="Xrt-7J-tup" id="QPO-a3-LFq"/>
                         <outlet property="changesView" destination="dg5-oe-xxi" id="a9t-hz-SSF"/>
-                        <outlet property="green" destination="V4L-QI-mh1" id="msH-I0-4HB"/>
                         <outlet property="greenSlider" destination="aXA-Wl-JNE" id="wbG-5a-fy1"/>
                         <outlet property="greenValue" destination="zlg-vL-zCf" id="QKp-dv-NZU"/>
-                        <outlet property="red" destination="Y0A-0f-MlW" id="Xzu-Af-GaV"/>
                         <outlet property="redSlider" destination="ZeM-W7-cwW" id="8l7-0F-ARs"/>
                         <outlet property="redValue" destination="Sec-f7-NuY" id="pvm-gA-HlH"/>
                     </connections>
@@ -135,6 +132,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
