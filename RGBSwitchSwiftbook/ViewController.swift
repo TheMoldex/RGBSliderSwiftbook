@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ViewControllerDelegate: AnyObject {
+    func vcPushDoneButton(_ color: UIColor )
+}
+
 final class ViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var changesView: UIView!
@@ -19,6 +23,10 @@ final class ViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    // MARK: - Public properties
+    weak var delegate: ViewControllerDelegate!
+    var viewColor: UIColor!
+    
     // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +34,7 @@ final class ViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        view.backgroundColor = .systemMint
+        view.backgroundColor = UIColor.yellow
         changesView.layer.cornerRadius = changesView.frame.width / 2
     }
     
@@ -35,7 +43,7 @@ final class ViewController: UIViewController {
         redValue.text = String(format: "%.2f", redSlider.value)
         changesView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
-            green: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1)
     }
@@ -60,29 +68,34 @@ final class ViewController: UIViewController {
     
     // MARK: - private methods
     private func settingStartView() {
-        setupSliders(slider: redSlider, color: .red)
-        setupSliders(slider: greenSlider, color: .green)
-        setupSliders(slider: blueSlider, color: .blue)
-        setupLabelAndValue()
+        setupSliders(slider: redSlider, color: .red, rgbColor: Float(CIColor(color: viewColor).red))
+        setupSliders(slider: greenSlider, color: .green, rgbColor: Float(CIColor(color: viewColor).green))
+        setupSliders(slider: blueSlider, color: .blue, rgbColor: Float(CIColor(color: viewColor).blue))
         changesView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1)
+        setupLabelAndValue()
+    }
+    
+    @IBAction func doneButtonPressed() {
+        delegate.vcPushDoneButton(changesView.backgroundColor ?? UIColor.black)
+        dismiss(animated: true)
     }
     
 }
 // MARK: - extensionVC
 extension ViewController {
-    private func setupSliders(slider: UISlider, color: UIColor) {
+    private func setupSliders(slider: UISlider, color: UIColor, rgbColor: Float = 1) {
         slider.minimumTrackTintColor = color
         slider.thumbTintColor = color
-        slider.setValue(0, animated: false)
+        slider.value = rgbColor 
     }
-    
+  
     private func setupLabelAndValue() {
         redValue.text = String(format: "%.2f", redSlider.value)
-        greenValue.text = String(format: "%.2f", redSlider.value)
+        greenValue.text = String(format: "%.2f", greenSlider.value)
         blueValue.text = String(format: "%.2f", blueSlider.value)
     }
 }
