@@ -68,9 +68,15 @@ final class ViewController: UIViewController {
     
     // MARK: - private methods
     private func settingStartView() {
-        setupSliders(slider: redSlider, color: .red, rgbColor: Float(CIColor(color: viewColor).red))
-        setupSliders(slider: greenSlider, color: .green, rgbColor: Float(CIColor(color: viewColor).green))
-        setupSliders(slider: blueSlider, color: .blue, rgbColor: Float(CIColor(color: viewColor).blue))
+        setupSliders(slider: redSlider,
+                     color: .red,
+                     rgbColor: Float(CIColor(color: viewColor).red))
+        setupSliders(slider: greenSlider,
+                     color: .green,
+                     rgbColor: Float(CIColor(color: viewColor).green))
+        setupSliders(slider: blueSlider,
+                     color: .blue,
+                     rgbColor: Float(CIColor(color: viewColor).blue))
         changesView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
@@ -90,7 +96,7 @@ extension ViewController {
     private func setupSliders(slider: UISlider, color: UIColor, rgbColor: Float = 1) {
         slider.minimumTrackTintColor = color
         slider.thumbTintColor = color
-        slider.value = rgbColor 
+        slider.value = rgbColor
     }
   
     private func setupLabelAndValue() {
