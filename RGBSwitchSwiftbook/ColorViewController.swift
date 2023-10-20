@@ -14,11 +14,6 @@ class ColorViewController: UIViewController {
         sliderVC.delegate = self
         sliderVC.viewColor = view.backgroundColor
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
 }
 
 extension ColorViewController: ViewControllerDelegate {
