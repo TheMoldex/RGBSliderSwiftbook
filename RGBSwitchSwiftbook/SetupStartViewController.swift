@@ -25,7 +25,8 @@ final class SetupStartViewController: UIViewController {
     // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingStartView()
+//        settingStartView()
+        setValueSlider(for: redSlider, greenSlider, blueSlider)
     }
     
     override func viewWillLayoutSubviews() {
@@ -46,19 +47,19 @@ final class SetupStartViewController: UIViewController {
     }
     
     // MARK: - private methods
-    private func settingStartView() {
-        setupSlider(slider: redSlider,
-                     color: .red,
-                     rgbColor: Float(CIColor(color: viewColor).red))
-        setupSlider(slider: greenSlider,
-                     color: .green,
-                     rgbColor: Float(CIColor(color: viewColor).green))
-        setupSlider(slider: blueSlider,
-                     color: .blue,
-                     rgbColor: Float(CIColor(color: viewColor).blue))
-        changesView.backgroundColor = viewColor
-        setupLabelAndValue()
-    }
+//    private func settingStartView() {
+//        setupSlider(slider: redSlider,
+//                     color: .red,
+//                     rgbColor: Float(CIColor(color: viewColor).red))
+//        setupSlider(slider: greenSlider,
+//                     color: .green,
+//                     rgbColor: Float(CIColor(color: viewColor).green))
+//        setupSlider(slider: blueSlider,
+//                     color: .blue,
+//                     rgbColor: Float(CIColor(color: viewColor).blue))
+//        changesView.backgroundColor = viewColor
+//        setupLabelAndValue()
+//    }
     
     @IBAction func doneButtonPressed() {
         delegate.vcPushDoneButton(changesView.backgroundColor ?? UIColor.black)
@@ -85,5 +86,18 @@ extension SetupStartViewController {
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1)
+    }
+    
+    private func setValueSlider(for colorSliders: UISlider...) {
+        let ciColor = CIColor(color: viewColor)
+        colorSliders.forEach { slider in
+            switch slider {
+            case redSlider: redSlider.value = Float(ciColor.red)
+            case greenSlider: greenSlider.value = Float(ciColor.green)
+            default: blueSlider.value = Float(ciColor.blue)
+            }
+        }
+        changesView.backgroundColor = viewColor
+        setupLabelAndValue()
     }
 }
