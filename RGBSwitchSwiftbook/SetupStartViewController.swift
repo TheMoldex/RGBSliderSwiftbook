@@ -19,6 +19,10 @@ final class SetupStartViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    @IBOutlet weak var redTF: UITextField!
+    @IBOutlet weak var greenTF: UITextField!
+    @IBOutlet weak var blueTF: UITextField!
+    
     // MARK: - Public properties
     weak var delegate: SendColorDelegate!
     var viewColor: UIColor!
@@ -26,11 +30,16 @@ final class SetupStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        settingStartView()
-        setValueSlider(for: redSlider, greenSlider, blueSlider)
+        setValue(for: redSlider, greenSlider, blueSlider)
     }
     
     override func viewWillLayoutSubviews() {
         changesView.layer.cornerRadius = changesView.frame.width / 2
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     // MARK: - IBActions
@@ -47,6 +56,7 @@ final class SetupStartViewController: UIViewController {
     }
     
     // MARK: - private methods
+    
 //    private func settingStartView() {
 //        setupSlider(slider: redSlider,
 //                     color: .red,
@@ -88,7 +98,7 @@ extension SetupStartViewController {
             alpha: 1)
     }
     
-    private func setValueSlider(for colorSliders: UISlider...) {
+    private func setValue(for colorSliders: UISlider...) {
         let ciColor = CIColor(color: viewColor)
         colorSliders.forEach { slider in
             switch slider {
