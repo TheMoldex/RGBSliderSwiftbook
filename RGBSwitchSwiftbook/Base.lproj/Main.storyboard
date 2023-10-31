@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="1218" y="-521"/>
         </scene>
-        <!--View Controller-->
+        <!--Setup Start View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RGBSwitchSwiftbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SetupStartViewController" customModule="RGBSwitchSwiftbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,19 +105,19 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZeM-W7-cwW" userLabel="Red Slider">
                                         <rect key="frame" x="-2" y="0.0" width="292" height="31"/>
                                         <connections>
-                                            <action selector="redSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="jHA-Db-0SM"/>
+                                            <action selector="setRGBSliders:" destination="BYZ-38-t0r" eventType="valueChanged" id="XSC-9t-soS"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-Wl-JNE" userLabel="Green Slider">
                                         <rect key="frame" x="-2" y="30" width="292" height="31"/>
                                         <connections>
-                                            <action selector="greenSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="JRx-Rp-jP9"/>
+                                            <action selector="setRGBSliders:" destination="BYZ-38-t0r" eventType="valueChanged" id="EX9-Xh-yCo"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="s76-HK-tmM" userLabel="Blue Slider">
                                         <rect key="frame" x="-2" y="60" width="292" height="31"/>
                                         <connections>
-                                            <action selector="blueSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="vb3-u1-InO"/>
+                                            <action selector="setRGBSliders:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cji-iO-HT1"/>
                                         </connections>
                                     </slider>
                                 </subviews>
@@ -135,7 +135,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="CJa-4o-buh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="7NO-GS-34s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LIk-zI-3MB" secondAttribute="bottom" constant="91" id="7sg-xr-gai"/>
@@ -196,6 +196,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

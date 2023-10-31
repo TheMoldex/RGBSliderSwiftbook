@@ -7,16 +7,20 @@
 
 import UIKit
 
-class ColorViewController: UIViewController {
+protocol SendColorDelegate: AnyObject {
+    func vcPushDoneButton(_ color: UIColor )
+}
+
+final class ColorViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let sliderVC = segue.destination as? ViewController else { return }
+        guard let sliderVC = segue.destination as? SetupStartViewController else { return }
         sliderVC.delegate = self
         sliderVC.viewColor = view.backgroundColor
     }
 }
 
-extension ColorViewController: ViewControllerDelegate {
+extension ColorViewController: SendColorDelegate {
     func vcPushDoneButton(_ color: UIColor) {
         view.backgroundColor = color
     }

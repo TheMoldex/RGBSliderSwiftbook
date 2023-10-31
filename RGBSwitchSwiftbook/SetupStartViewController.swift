@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol ViewControllerDelegate: AnyObject {
-    func vcPushDoneButton(_ color: UIColor )
-}
-
-final class ViewController: UIViewController {
+final class SetupStartViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var changesView: UIView!
     
@@ -24,9 +20,8 @@ final class ViewController: UIViewController {
     @IBOutlet weak var blueSlider: UISlider!
     
     // MARK: - Public properties
-    weak var delegate: ViewControllerDelegate!
+    weak var delegate: SendColorDelegate!
     var viewColor: UIColor!
-    
     // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,54 +29,34 @@ final class ViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        view.backgroundColor = UIColor.yellow
         changesView.layer.cornerRadius = changesView.frame.width / 2
     }
     
     // MARK: - IBActions
-    @IBAction func redSliderAction() {
-        redValue.text = String(format: "%.2f", redSlider.value)
-        changesView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1)
-    }
-    
-    @IBAction func greenSliderAction() {
-        greenValue.text = String(format: "%.2f", greenSlider.value)
-        changesView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1)
-    }
-    
-    @IBAction func blueSliderAction() {
-        blueValue.text = String(format: "%.2f", blueSlider.value)
-        changesView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1)
+    @IBAction func setRGBSliders(_ sender: UISlider) {
+        switch sender {
+        case redSlider:
+            redValue.text = String(format: "%.2f", redSlider.value)
+        case greenSlider:
+            greenValue.text = String(format: "%.2f", greenSlider.value)
+        default:
+            blueValue.text = String(format: "%.2f", blueSlider.value)
+        }
+        setupBackgroundColor()
     }
     
     // MARK: - private methods
     private func settingStartView() {
-        setupSliders(slider: redSlider,
+        setupSlider(slider: redSlider,
                      color: .red,
                      rgbColor: Float(CIColor(color: viewColor).red))
-        setupSliders(slider: greenSlider,
+        setupSlider(slider: greenSlider,
                      color: .green,
                      rgbColor: Float(CIColor(color: viewColor).green))
-        setupSliders(slider: blueSlider,
+        setupSlider(slider: blueSlider,
                      color: .blue,
                      rgbColor: Float(CIColor(color: viewColor).blue))
-        changesView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1)
+        changesView.backgroundColor = viewColor
         setupLabelAndValue()
     }
     
@@ -92,8 +67,8 @@ final class ViewController: UIViewController {
     
 }
 // MARK: - extensionVC
-extension ViewController {
-    private func setupSliders(slider: UISlider, color: UIColor, rgbColor: Float = 1) {
+extension SetupStartViewController {
+    private func setupSlider(slider: UISlider, color: UIColor, rgbColor: Float = 1) {
         slider.minimumTrackTintColor = color
         slider.thumbTintColor = color
         slider.value = rgbColor
@@ -103,5 +78,12 @@ extension ViewController {
         redValue.text = String(format: "%.2f", redSlider.value)
         greenValue.text = String(format: "%.2f", greenSlider.value)
         blueValue.text = String(format: "%.2f", blueSlider.value)
+    }
+    private func setupBackgroundColor() {
+        changesView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1)
     }
 }
